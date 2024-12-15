@@ -1,0 +1,57 @@
+@startuml
+class User {
+  int id_user
+  varchar nama
+  varchar username
+  varchar email
+  varchar no_telp
+  enum role
+  varchar password
+  timestamp created_at
+  text foto
+  tinyint is_active
+}
+
+class Supplier {
+  int id_supplier
+  varchar nama_supplier
+  varchar no_telp
+  text alamat
+}
+
+class Barang {
+  char id_barang
+  varchar nama_barang
+  int stok
+  int satuan_id
+  int jenis_id
+}
+
+class BarangMasuk {
+  char id_barang_masuk
+  int supplier_id
+  int user_id
+  char barang_id
+  date tanggal_masuk
+}
+
+class BarangKeluar {
+  char id_barang_keluar
+  int user_id
+  char barang_id
+  int jumlah_keluar
+  date tanggal_keluar
+}
+
+class Jenis {
+  int id_jenis
+  varchar nama_jenis
+}
+
+User "1..*" -- "0..*" BarangMasuk : mencatat
+User "1..*" -- "0..*" BarangKeluar : mencatat
+Supplier "1" -- "0..*" BarangMasuk : memasok
+Barang "1" -- "0..*" BarangMasuk : memiliki
+Barang "1" -- "0..*" BarangKeluar : memiliki
+Jenis "1" -- "0..*" Barang : menggolongkan
+@enduml

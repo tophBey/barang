@@ -1,0 +1,19 @@
+@startuml
+actor "Admin" as Admin
+actor "Staff Gudang" as Staff
+
+rectangle System {
+  Admin --> (Login)
+  Admin --> (Mengelola Data Pengguna)
+  Admin --> (Mengelola Data Barang)
+  Admin --> (Mengelola Data Pemasok)
+  Admin --> (Mencatat Barang Masuk)
+  Admin --> (Mencatat Barang Keluar)
+  Admin --> (Melihat Laporan)
+
+  Staff --> (Login)
+  Staff --> (Mencatat Barang Masuk)
+  Staff --> (Mencatat Barang Keluar)
+  Staff --> (Melihat Laporan)
+}
+@enduml
